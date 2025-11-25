@@ -1,0 +1,370 @@
+/* ===========================================
+   RESET & TIPOGRAFIA
+   =========================================== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html,body { height: 100%; }
+body {
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #222;
+  background: #fcfcfc;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height: 1.5;
+}
+
+/* container central */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===========================================
+   HEADER / NAV
+   =========================================== */
+.site-header {
+  background: linear-gradient(180deg,#f7d4e9 0%, #ffeef9 100%);
+  padding: 18px 0;
+  box-shadow: 0 6px 18px rgba(11,7,10,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(4px);
+}
+
+/* nav-row layout */
+.nav-row {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 20px;
+}
+
+/* marca */
+.brand {
+  font-family: "Playfair Display", serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #b30059;
+  letter-spacing: 0.6px;
+}
+.brand span { color: #ff4da6; }
+
+/* botao hamburger (mobile) */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #b30059;
+  border-radius: 2px;
+  transition: transform .25s ease, opacity .25s ease;
+}
+.hamburger::before { transform: translateY(-7px); }
+.hamburger::after  { transform: translateY(5px); }
+
+/* nav principal */
+.main-nav {
+  display:flex;
+  gap: 18px;
+  align-items:center;
+}
+.main-nav a {
+  color: #b30059;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 10px;
+  border-radius: 8px;
+  transition: all .25s ease;
+}
+.main-nav a:hover,
+.main-nav a:focus {
+  color:#fff;
+  background: linear-gradient(90deg,#ff4da6,#ff2e8a);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(255,77,166,0.12);
+}
+
+/* ===========================================
+   HERO
+   =========================================== */
+.hero {
+  padding: 40px 0;
+  overflow: hidden;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  align-items: center;
+}
+.hero-text h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 42px;
+  color: #b30059;
+  margin-bottom: 8px;
+  transform: translateY(12px);
+  opacity: 0;
+  animation: fadeUp .7s .1s forwards;
+}
+.hero-text .lead {
+  color: #444;
+  font-size: 16px;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: fadeUp .7s .2s forwards;
+}
+.hero-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(11,7,10,0.07);
+  transform: scale(.98);
+  transition: transform .6s ease;
+}
+.hero-image img:hover { transform: scale(1); }
+
+/* ===========================================
+   SEÇÕES (TÍTULOS & LAYOUT)
+   =========================================== */
+.section {
+  padding: 60px 0;
+}
+.section.light { background: #fffafc; }
+.section h2 {
+  font-family: "Playfair Display", serif;
+  color: #b30059;
+  font-size: 30px;
+  margin-bottom: 18px;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: fadeUp .6s .05s forwards;
+}
+
+/* ===========================================
+   CARTÕES DE TURMAS (RESPONSIVOS + ANIMAÇÃO)
+   =========================================== */
+.card-container {
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.card {
+  background: linear-gradient(180deg,#fff0f7 0%, #fff7fb 100%);
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 8px 20px rgba(11,7,10,0.06);
+  transition: transform .4s cubic-bezier(.2,.9,.2,1), box-shadow .4s;
+  transform-origin: center;
+  overflow: hidden;
+}
+.card:hover {
+  transform: translateY(-10px) rotateZ(-0.5deg);
+  box-shadow: 0 18px 40px rgba(11,7,10,0.12);
+}
+.img-container {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.img-container img {
+  display:block;
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  transition: transform .6s ease;
+}
+.card:hover .img-container img { transform: scale(1.06); }
+
+/* overlay nome da turma */
+.overlay {
+  position:absolute;
+  bottom:8px;
+  left:8px;
+  padding:6px 10px;
+  background: linear-gradient(90deg, rgba(179,0,89,0.95), rgba(255,77,166,0.95));
+  color:white;
+  font-weight:700;
+  border-radius:8px;
+  font-size:14px;
+  transform: translateY(6px);
+  opacity: 0;
+  transition: all .35s ease;
+}
+.card:hover .overlay { transform: translateY(0); opacity:1; }
+
+/* textos */
+.card h3 { color:#b30059; margin:12px 0 6px; font-size:18px; }
+.card p { color:#333; font-size:14px; }
+
+/* small */
+.small { color:#666; font-size:13px; margin-top:8px; }
+
+/* ===========================================
+   PRICING (ANIMAÇÕES)
+   =========================================== */
+.pricing {
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.price-card {
+  background: linear-gradient(180deg,#fff0f7,#fff7fb);
+  border-radius: 14px;
+  padding: 18px;
+  text-align:center;
+  box-shadow: 0 8px 20px rgba(11,7,10,0.06);
+  transition: transform .4s ease, box-shadow .4s ease;
+  position:relative;
+  overflow:hidden;
+}
+.price-card:hover { transform: translateY(-12px); box-shadow: 0 22px 48px rgba(11,7,10,0.14); }
+.price-card h3 { color:#b30059; font-size:18px; }
+.price-card .price {
+  font-size:22px;
+  font-weight:700;
+  color:#ff2e8a;
+  margin-top:10px;
+  opacity:0;
+  transform: translateY(6px);
+  transition: all .35s ease;
+}
+.price-card:hover .price { opacity:1; transform: translateY(0); }
+
+.price-card .details {
+  margin-top:12px;
+  max-height:0;
+  opacity:0;
+  overflow:hidden;
+  transition: all .45s ease;
+}
+.price-card:hover .details { max-height:200px; opacity:1; }
+
+/* lista */
+.price-card ul { list-style:none; padding-left:0; text-align:left; margin:0 auto; max-width:220px; }
+.price-card li { margin-bottom:8px; color:#444; font-size:14px; }
+
+/* ===========================================
+   PROFESSORA
+   =========================================== */
+.teacher {
+  display:flex;
+  align-items:center;
+  gap: 24px;
+}
+.teacher-img-container {
+  position:relative;
+  width:300px;
+  flex: 0 0 300px;
+}
+.teacher-img-container img {
+  width:100%;
+  border-radius:12px;
+  box-shadow:0 12px 36px rgba(11,7,10,0.08);
+  transition: transform .5s ease;
+}
+.teacher-img-container:hover img { transform: scale(1.03); }
+
+.teacher-info {
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:18px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.35));
+  color: #fff;
+  border-radius:12px;
+  opacity:0;
+  transform: translateY(6px);
+  transition: all .35s ease;
+}
+.teacher-img-container:hover .teacher-info { opacity:1; transform: translateY(0); }
+
+/* ===========================================
+   LOCALIZAÇÃO
+   =========================================== */
+.location-grid { display:flex; gap:20px; align-items:flex-start; }
+.location-card { background:#fff; padding:18px; border-radius:12px; box-shadow:0 8px 20px rgba(11,7,10,0.05); }
+.imagem { width:100%; max-width:420px; border-radius:10px; margin-top:12px; }
+
+/* ===========================================
+   FOOTER
+   =========================================== */
+.site-footer {
+  background: linear-gradient(180deg,#f7d4e9 0%, #fff4fb 100%);
+  padding:28px 0;
+  margin-top: 36px;
+  color:#b30059;
+  font-weight:600;
+  box-shadow: 0 -6px 18px rgba(11,7,10,0.02);
+}
+.footer-grid { display:flex; justify-content:space-between; align-items:center; gap:20px; max-width:1100px; margin:0 auto; padding:0 20px; }
+
+/* ===========================================
+   UTILITÁRIOS & ANIMAÇÕES
+   =========================================== */
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(10px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+
+/* ===========================================
+   RESPONSIVIDADE
+   =========================================== */
+/* large tablets */
+@media (max-width: 992px) {
+  .card-container { grid-template-columns: repeat(2, 1fr); }
+  .pricing { grid-template-columns: repeat(3, 1fr); }
+  .hero-grid { grid-template-columns: 1fr 260px; }
+  .footer-grid { flex-direction:column; text-align:center; gap:12px; }
+}
+
+/* tablets & small laptops */
+@media (max-width: 768px) {
+  .nav-toggle { display:inline-flex; }
+  .main-nav { 
+    position: fixed;
+    top: 70px;
+    right: 14px;
+    background: linear-gradient(180deg,#fff,#fffefc);
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 14px 40px rgba(11,7,10,0.08);
+    flex-direction: column;
+    gap: 10px;
+    transform: scale(.98);
+    opacity: 0;
+    pointer-events: none;
+    transition: all .28s ease;
+    width: 220px;
+  }
+  .main-nav.open { opacity:1; pointer-events:auto; transform: scale(1); }
+  .main-nav a { display:block; padding:8px 10px; border-radius:8px; }
+
+  .hero-grid { grid-template-columns: 1fr; }
+  .card-container { grid-template-columns: 1fr 1fr; }
+  .pricing { grid-template-columns: repeat(2, 1fr); }
+  .teacher { flex-direction:column; gap:12px; }
+}
+
+/* mobile */
+@media (max-width: 480px) {
+  .brand { font-size:2
+<!-- CSS (style.css) -->
+
+
